@@ -27,7 +27,7 @@ let auth = "0d8938875a1a61e76761e332d9dcac951abee7b1";
 const accel = require("@prastut/accel");
 
 let auth = "0d8938875a1a61e76761e332d9dcac951abee7b1";
-let endPoint = "http://localhost:3002";
+let endPoint = "https://eth.accel-baas.io";
 
 
 accel
@@ -47,7 +47,7 @@ accel
 const accel = require("@prastut/accel");
 
 let auth = "0d8938875a1a61e76761e332d9dcac951abee7b1";
-let endPoint = "http://localhost:3002";
+let endPoint = "https://eth.accel-baas.io";
 
 
 accel
@@ -67,7 +67,7 @@ accel
 const accel = require("@prastut/accel");
 
 let auth = "0d8938875a1a61e76761e332d9dcac951abee7b1";
-let endPoint = "http://localhost:3002";
+let endPoint = "https://eth.accel-baas.io";
 
 accel
   .sendTransaction(
@@ -91,7 +91,7 @@ accel
 const accel = require("@prastut/accel");
 
 let auth = "0d8938875a1a61e76761e332d9dcac951abee7b1";
-let endPoint = "http://localhost:3002";
+let endPoint = "https://eth.accel-baas.io";
 
 accel
   .call(endPoint, auth, "e9f37c04edd58fd87e10", "get")
@@ -111,7 +111,7 @@ accel
 const accel = require("@prastut/accel");
 
 let auth = "0d8938875a1a61e76761e332d9dcac951abee7b1";
-let endPoint = "http://localhost:3002";
+let endPoint = "https://eth.accel-baas.io";
 
 
 accel
