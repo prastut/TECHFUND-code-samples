@@ -1,6 +1,6 @@
+require("babel-polyfill");
 const axios = require("axios");
 const API_ROOT = "http://localhost:3002";
-let auth = "0d8938875a1a61e76761e332d9dcac951abee7b1";
 
 const headers = {
   headers: {
@@ -9,18 +9,18 @@ const headers = {
 };
 
 const accel = {
-  createWallet: async () => {
+  createWallet: async auth => {
     try {
       const makeCreateWalletRequest = await axios.post(
         `${API_ROOT}/createWallet?auth=${auth}`
       );
       return makeCreateWalletRequest.data;
     } catch (error) {
-      return error;
+      throw error;
     }
   },
 
-  getBalance: async wallet => {
+  getBalance: async (auth, wallet) => {
     try {
       const params = {
         wallet
@@ -32,11 +32,12 @@ const accel = {
       );
       return makeCallRequest.data;
     } catch (error) {
-      return error;
+      throw error;
     }
   },
 
   sendTransaction: async (
+    auth,
     walletFrom,
     walletTo,
     amount,
@@ -62,11 +63,11 @@ const accel = {
 
       return makeCallRequest.data;
     } catch (error) {
-      return error;
+      throw error;
     }
   },
 
-  call: async (id, method, args = []) => {
+  call: async (auth, id, method, args = []) => {
     try {
       const params = {
         id,
@@ -81,11 +82,12 @@ const accel = {
       );
       return makeCallRequest.data;
     } catch (error) {
-      return error;
+      throw error;
     }
   },
 
   transaction: async (
+    auth,
     id,
     method,
     args = [],
@@ -110,7 +112,7 @@ const accel = {
       );
       return makeCallRequest.data;
     } catch (error) {
-      return error;
+      throw error;
     }
   }
 };
