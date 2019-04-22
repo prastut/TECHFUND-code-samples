@@ -1,11 +1,15 @@
 # TECHFUND-code-samples
 
-## How to use?
-
-First import accel library using the following format:
+## Installation
 
 ```
-const accel = require("./lib/accel");
+npm install @prastut/accel
+```
+
+## How to use?
+
+```
+const accel = require("@prastut/accel");
 ```
 
 then copy the `api-key` from accel-baas-admin
@@ -19,11 +23,15 @@ let auth = "0d8938875a1a61e76761e332d9dcac951abee7b1";
 ### `/createWallet`
 
 ```
-const accel = require("./lib/accel");
+
+const accel = require("@prastut/accel");
+
 let auth = "0d8938875a1a61e76761e332d9dcac951abee7b1";
+let endPoint = "http://localhost:3002";
+
 
 accel
-  .createWallet(auth)
+  .createWallet(endPoint, auth)
   .then(data => {
     console.log(data);
   })
@@ -36,17 +44,19 @@ accel
 ### `/getBalance`
 
 ```
-const accel = require("./lib/accel");
+const accel = require("@prastut/accel");
+
 let auth = "0d8938875a1a61e76761e332d9dcac951abee7b1";
+let endPoint = "http://localhost:3002";
 
 
 accel
-  .getBalance(auth, "0xca5a4ebf81a8faddcdf2932c58c67f6cb8d9a49a")
+  .getBalance(endPoint, auth, "0xca5a4ebf81a8faddcdf2932c58c67f6cb8d9a49a")
   .then(data => {
     console.log(data);
   })
   .catch(error => {
-    console.log(error);
+    console.log(error.response.data);
   });
 
 ```
@@ -54,11 +64,14 @@ accel
 ### `/send`
 
 ```
-const accel = require("./lib/accel");
+const accel = require("@prastut/accel");
+
 let auth = "0d8938875a1a61e76761e332d9dcac951abee7b1";
+let endPoint = "http://localhost:3002";
 
 accel
   .sendTransaction(
+    endPoint,
     auth,
     "0xca5a4ebf81a8faddcdf2932c58c67f6cb8d9a49a",
     "0x8988dcebebe2b2cc753c34fc269e2ae4471e7ea5",
@@ -68,23 +81,25 @@ accel
     console.log(data);
   })
   .catch(error => {
-    console.log(error);
+    console.log(error.response.data);
   });
 ```
 
 ### `/call`
 
 ```
-const accel = require("./lib/accel");
+const accel = require("@prastut/accel");
+
 let auth = "0d8938875a1a61e76761e332d9dcac951abee7b1";
+let endPoint = "http://localhost:3002";
 
 accel
-  .call(auth, "e9f37c04edd58fd87e10", "get")
+  .call(endPoint, auth, "e9f37c04edd58fd87e10", "get")
   .then(data => {
     console.log(data);
   })
   .catch(error => {
-    console.log(error);
+    console.log(error.response.data);
   });
 
 ```
@@ -93,12 +108,15 @@ accel
 
 ```
 
-const accel = require("./lib/accel");
+const accel = require("@prastut/accel");
+
 let auth = "0d8938875a1a61e76761e332d9dcac951abee7b1";
+let endPoint = "http://localhost:3002";
 
 
 accel
   .transaction(
+    endPoint,
     auth,
     "e9f37c04edd58fd87e10",
     "set",
@@ -109,7 +127,7 @@ accel
     console.log(data);
   })
   .catch(error => {
-    console.log(error);
+    console.log(error.response.data);
   });
 
 ```
