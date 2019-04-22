@@ -12,6 +12,7 @@ accel
     console.log(error.response.data);
   });
 
+//Getting Balance
 accel
   .getBalance(endPoint, auth, "0xca5a4ebf81a8faddcdf2932c58c67f6cb8d9a49a")
   .then(data => {
@@ -21,40 +22,45 @@ accel
     console.log(error);
   });
 
-// accel
-//   .sendTransaction(
-//     auth,
-//     "0xca5a4ebf81a8faddcdf2932c58c67f6cb8d9a49a",
-//     "0x8988dcebebe2b2cc753c34fc269e2ae4471e7ea5",
-//     "1000000000000000"
-//   )
-//   .then(data => {
-//     console.log(data);
-//   })
-//   .catch(error => {
-//     console.log(error);
-//   });
+accel
+  .sendTransaction(
+    auth,
+    "0xca5a4ebf81a8faddcdf2932c58c67f6cb8d9a49a",
+    "0x8988dcebebe2b2cc753c34fc269e2ae4471e7ea5",
+    "1000000000000000"
+  )
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.log(error);
+  });
 
-// accel
-//   .call(auth, "e9f37c04edd58fd87e10", "get")
-//   .then(data => {
-//     console.log(data);
-//   })
-//   .catch(error => {
-//     console.log(error);
-//   });
+const hello = ["prastut"];
 
-// accel
-//   .transaction(
-//     auth,
-//     "e9f37c04edd58fd87e10",
-//     "set",
-//     "8",
-//     "0xca5a4ebf81a8faddcdf2932c58c67f6cb8d9a49a"
-//   )
-//   .then(data => {
-//     console.log(data);
-//   })
-//   .catch(error => {
-//     console.log(error);
-//   });
+accel
+  .call(endPoint, auth, "f8bdfc873989bdb37991", "get", hello)
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
+const testing = ["prastut", "25"];
+
+accel
+  .transaction(
+    endPoint,
+    auth,
+    "f8bdfc873989bdb37991",
+    "set",
+    testing,
+    "0xca5a4ebf81a8faddcdf2932c58c67f6cb8d9a49a"
+  )
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.log(error);
+  });

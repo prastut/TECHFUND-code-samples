@@ -22,13 +22,16 @@ const accel = {
   getBalance: async (endPoint, auth, wallet) => {
     try {
       const params = {
-        wallet
+        params: {
+          wallet
+        }
       };
 
       const makeCallRequest = await axios.get(
         `${endPoint}/getBalance?auth=${auth}`,
         params
       );
+
       return makeCallRequest.data;
     } catch (error) {
       throw error;
