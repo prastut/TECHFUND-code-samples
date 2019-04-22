@@ -1,8 +1,8 @@
 {
-  "name": "accel",
+  "name": "@prastut/accel",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "accel-baas package to easily send API requests",
+  "main": "./lib/accel.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cross-env BABEL_ENV=production babel src --out-dir lib",
@@ -13,7 +13,7 @@
     "src"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0"
   },
