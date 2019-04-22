@@ -1,6 +1,5 @@
 require("babel-polyfill");
 const axios = require("axios");
-const API_ROOT = "http://localhost:3002";
 
 const headers = {
   headers: {
@@ -9,10 +8,10 @@ const headers = {
 };
 
 const accel = {
-  createWallet: async auth => {
+  createWallet: async (endPoint, auth) => {
     try {
       const makeCreateWalletRequest = await axios.post(
-        `${API_ROOT}/createWallet?auth=${auth}`
+        `${endPoint}/createWallet?auth=${auth}`
       );
       return makeCreateWalletRequest.data;
     } catch (error) {
@@ -20,14 +19,14 @@ const accel = {
     }
   },
 
-  getBalance: async (auth, wallet) => {
+  getBalance: async (endPoint, auth, wallet) => {
     try {
       const params = {
         wallet
       };
 
       const makeCallRequest = await axios.get(
-        `${API_ROOT}/getBalance?auth=${auth}`,
+        `${endPoint}/getBalance?auth=${auth}`,
         params
       );
       return makeCallRequest.data;
@@ -37,6 +36,7 @@ const accel = {
   },
 
   sendTransaction: async (
+    endPoint,
     auth,
     walletFrom,
     walletTo,
@@ -56,7 +56,7 @@ const accel = {
       };
 
       const makeCallRequest = await axios.post(
-        `${API_ROOT}/send?auth=${auth}`,
+        `${endPoint}/send?auth=${auth}`,
         params,
         headers
       );
@@ -67,7 +67,7 @@ const accel = {
     }
   },
 
-  call: async (auth, id, method, args = []) => {
+  call: async (endPoint, auth, id, method, args = []) => {
     try {
       const params = {
         id,
@@ -76,7 +76,7 @@ const accel = {
       };
 
       const makeCallRequest = await axios.post(
-        `${API_ROOT}/call?auth=${auth}`,
+        `${endPoint}/call?auth=${auth}`,
         params,
         headers
       );
@@ -87,6 +87,7 @@ const accel = {
   },
 
   transaction: async (
+    endPoint,
     auth,
     id,
     method,
@@ -106,7 +107,7 @@ const accel = {
       };
 
       const makeCallRequest = await axios.post(
-        `${API_ROOT}/transaction?auth=${auth}`,
+        `${endPoint}/transaction?auth=${auth}`,
         params,
         headers
       );
