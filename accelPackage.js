@@ -36,12 +36,22 @@ const accel = {
     }
   },
 
-  sendTransaction: async (walletFrom, walletTo, amount) => {
+  sendTransaction: async (
+    walletFrom,
+    walletTo,
+    amount,
+    gas = null,
+    unit = "wei",
+    delegate = false
+  ) => {
     try {
       const params = {
         from: walletFrom,
         to: walletTo,
-        amount
+        amount,
+        gas,
+        unit,
+        delegate
       };
 
       const makeCallRequest = await axios.post(
@@ -75,13 +85,22 @@ const accel = {
     }
   },
 
-  transaction: async (id, method, args = [], wallet) => {
+  transaction: async (
+    id,
+    method,
+    args = [],
+    wallet,
+    gas = null,
+    delegate = false
+  ) => {
     try {
       const params = {
         id,
         method,
         args: JSON.stringify(args),
-        wallet
+        wallet,
+        gas,
+        delegate
       };
 
       const makeCallRequest = await axios.post(
