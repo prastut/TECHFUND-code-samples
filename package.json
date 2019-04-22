@@ -1,6 +1,6 @@
 {
   "name": "@prastut/accel",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "accel-baas package to easily send API requests",
   "main": "./lib/accel.js",
   "scripts": {
